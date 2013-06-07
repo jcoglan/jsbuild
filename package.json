@@ -1,14 +1,14 @@
-{ "name"              : "jsbuild"
-, "description"       : "Build tool for the JS.Package dependency system"
-, "homepage"          : "http://github.com/jcoglan/jsbuild"
-, "author"            : "James Coglan <jcoglan@gmail.com> (http://jcoglan.com/)"
-, "keywords"          : ["build"]
-, "license"           : "MIT"
+{ "name"            : "jsbuild"
+, "description"     : "Build tool for the JS.Package dependency system"
+, "homepage"        : "http://github.com/jcoglan/jsbuild"
+, "author"          : "James Coglan <jcoglan@gmail.com> (http://jcoglan.com/)"
+, "keywords"        : ["build"]
+, "license"         : "MIT"
 
-, "version"           : "1.0.0"
-, "engines"           : {"node": ">=0.4.0"}
-, "bin"               : {"jsbuild": "./bin/jsbuild"}
-, "dependencies"      : {"jsclass": "", "nopt": ""}
+, "version"         : "1.0.0"
+, "engines"         : {"node": ">=0.4.0"}
+, "bin"             : {"jsbuild": "./bin/jsbuild"}
+, "dependencies"    : {"jsclass": "", "nopt": ""}
 
 , "repository"      : { "type"  : "git"
                       , "url"   : "git://github.com/jcoglan/jsbuild.git"
