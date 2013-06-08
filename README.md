@@ -68,8 +68,8 @@ The options available are:
 * `--no-packages`, `-P`: if this is set, the `JS.Packages` code will not be
   included in the build. Including it means your `JS.require()` calls will
   carry on working.
-* `--bundles`, `-b`: optional path to bundle definition file (see 'Organising
-  bundles' below).
+* `--bundles`, `-b`: optional path to bundle definition file (see [Organising
+  bundles](#organising-bundles)).
 * `--output`, `-o`: the type of output required, either `code` (default) or
   `paths`. Using `code` makes `jsbuild` output the combined source code, and
   `paths` makes it output the paths to the bundled files.
@@ -107,7 +107,7 @@ The file lists a number of bundles, each of which has an `include` field and an
 optional `exclude` field, both of which can be a list or a single item. The
 `include` field specifies which objects from the manifest should go into that
 bundle, while `exclude` specifies which dependencies should be skipped, usually
-because they are provided by another bundle you will load separately.  Items
+because they are provided by another bundle you will load separately. Items
 given to `exlude` can be object names from the manifest, or other bundle names
 to exclude everything provided by that bundle and any bundle it depends on.
 
