@@ -47,14 +47,14 @@ if (params.output && outputs.indexOf(params.output) < 0)
 if (include.length === 0) {
   console.error('\nUsage: jsbuild --manifest MANIFEST --root ROOT [OPTIONS] module1 [module2 ...]')
 
-  console.error('\nOptions:  --manifest,    -m : path to JS.Packages manifest script')
-  console.error('          --root,        -r : directory containing your JavaScripts')
-  console.error('          --external,    -e : include external scripts from the web')
-  console.error('          --stylesheets, -s : embed required CSS stylesheets in JS')
-  console.error('          --no-packages, -P : don\'t include JS.Package system in build')
-  console.error('          --bundles,     -b : path to bundle definitions file')
-  console.error('          --output,      -o : select output type: \'code\' or \'paths\'')
-  console.error('          --directory,   -d : directory for paths to print relative to')
+  console.error('\nOptions:  -m, --manifest    : path to JS.Packages manifest script')
+  console.error('          -r, --root        : directory containing your JavaScripts')
+  console.error('          -e, --external    : include external scripts from the web')
+  console.error('          -s, --stylesheets : embed required CSS stylesheets in JS')
+  console.error('          -P, --no-packages : don\'t include JS.Package system in build')
+  console.error('          -b, --bundles     : path to bundle definitions file')
+  console.error('          -o, --output      : select output type: \'code\' or \'paths\'')
+  console.error('          -d, --directory   : directory for paths to print relative to')
 
   console.error('\ne.g. jsbuild -m path/to/js/manifest.js -r path/to/js/ -Pe jQuery JS.Set\n')
 

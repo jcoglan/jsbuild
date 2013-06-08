@@ -59,21 +59,21 @@ $ jsbuild --manifest MANIFEST --root ROOT [OPTIONS] module1 [module2 ...]
 
 The options available are:
 
-* `--manifest`, `-m`: the path to your package manifest. If you have several
+* `-m`, `--manifest`: the path to your package manifest. If you have several
   manifests, use `-m` multiple times.
-* `--root`, `-r`: the directory containing your application's JavaScript files.
+* `-r`, `--root`: the directory containing your application's JavaScript files.
   Paths in the manifest are resolved relative to this directory.
-* `--external`, `-e`: unless this option is passed, the build will skip files
+* `-e`, `--external`: unless this option is passed, the build will skip files
   that come from the web rather than the local filesystem.
-* `--no-packages`, `-P`: if this is set, the `JS.Packages` code will not be
+* `-P`, `--no-packages`: if this is set, the `JS.Packages` code will not be
   included in the build. Including it means your `JS.require()` calls will
   carry on working.
-* `--bundles`, `-b`: optional path to bundle definition file (see [Organising
+* `-b`, `--bundles`: optional path to bundle definition file (see [Organising
   bundles](#organising-bundles)).
-* `--output`, `-o`: the type of output required, either `code` (default) or
+* `-o`, `--output`: the type of output required, either `code` (default) or
   `paths`. Using `code` makes `jsbuild` output the combined source code, and
   `paths` makes it output the paths to the bundled files.
-* `--directory`, `-d`: a directory to trim from paths output when using `-o
+* `-d`, `--directory`: a directory to trim from paths output when using `-o
   paths`. For example passing `-d public/js` will make `jsbuild` output
   `app.js` rather than `public/js/app.js`.
 
