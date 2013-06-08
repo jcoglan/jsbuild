@@ -8,7 +8,7 @@ var fs      = require('fs'),
 
     nopt    = require('nopt'),
 
-    options = { manifest:     path,
+    options = { manifest:     Array,
                 root:         path,
                 external:     Boolean,
                 stylesheets:  Boolean,
@@ -35,17 +35,13 @@ var fs      = require('fs'),
     include = params.argv.remain.slice(),
     dir     = new RegExp('^' + path.resolve(params.directory || process.cwd()) + '/')
 
-var C = require('jsclass/src/console').Console,
-    P = require('jsclass')
+var P = require('../lib/package')
 
-P.WEB_ROOT = path.resolve(params.root || process.cwd())
+P.ROOT = path.resolve(params.root || process.cwd())
 P.ENV.JS = P
 
 var die = function(message) {
-  C.consoleFormat('white', 'bgred')
-  C.print('ERROR')
-  C.reset()
-  C.puts(' ' + message)
+  console.error(' [ERROR] ' + message);
   process.exit(1)
 }
 
@@ -53,20 +49,18 @@ if (params.output && outputs.indexOf(params.output) < 0)
   die('--output must be one of: ' + outputs.join(', '))
 
 if (include.length === 0) {
-  C.bold()
-  C.puts('\nUsage: jsbuild --manifest MANIFEST --root ROOT [OPTIONS] module1 [module2 ...]')
-  C.reset()
+  console.log('\nUsage: jsbuild --manifest MANIFEST --root ROOT [OPTIONS] module1 [module2 ...]')
 
-  C.puts('\nOptions:  --manifest,    -m : path to JS.Packages manifest script')
-  C.puts('          --root,        -r : directory containing your JavaScripts')
-  C.puts('          --external,    -e : include external scripts from the web')
-  C.puts('          --stylesheets, -s : embed required CSS stylesheets in JS')
-  C.puts('          --no-packages, -P : don\'t include JS.Package system in build')
-  C.puts('          --bundles,     -b : path to bundle definitions file')
-  C.puts('          --output,      -o : select output type: \'code\' or \'paths\'')
-  C.puts('          --directory,   -d : directory for paths to print relative to')
+  console.log('\nOptions:  --manifest,    -m : path to JS.Packages manifest script')
+  console.log('          --root,        -r : directory containing your JavaScripts')
+  console.log('          --external,    -e : include external scripts from the web')
+  console.log('          --stylesheets, -s : embed required CSS stylesheets in JS')
+  console.log('          --no-packages, -P : don\'t include JS.Package system in build')
+  console.log('          --bundles,     -b : path to bundle definitions file')
+  console.log('          --output,      -o : select output type: \'code\' or \'paths\'')
+  console.log('          --directory,   -d : directory for paths to print relative to')
 
-  C.puts('\ne.g. jsbuild -m path/to/js/manifest.js -r path/to/js/ -Pe jQuery JS.Set\n')
+  console.log('\ne.g. jsbuild -m path/to/js/manifest.js -r path/to/js/ -Pe jQuery JS.Set\n')
 
   process.exit()
 }
@@ -75,7 +69,7 @@ var HTTP_REGEX = /^https?:/i,
     CSS_REGEX  = /\.css$/i
 
 var resolve = function(file, ref) {
-  var root = P.WEB_ROOT
+  var root = P.ROOT
 
   if (HTTP_REGEX.test(ref)) {
     return ref
@@ -88,7 +82,12 @@ var resolve = function(file, ref) {
   }
 }
 
-if (params.manifest) require(params.manifest)
+if (params.manifest)
+  params.manifest.forEach(function(manifest) {
+    var pathname = path.resolve(manifest)
+    P.ENV.JSCLASS_PATH = path.dirname(manifest)
+    require(pathname)
+  })
 
 var packages = [],
     excluded = [],
@@ -167,7 +166,7 @@ if (params.output === 'paths') {
 }
 
 if (params.packages !== false)
-  source.push(fs.readFileSync(__dirname + '/../node_modules/jsclass/src/package.js'))
+  source.push(fs.readFileSync(__dirname + '/../lib/package.js'))
 
 var readLocal = function(file, callback) {
   fs.readFile(file, function(error, content) {
@@ -211,7 +210,7 @@ var readRemote = function(file, callback) {
 }
 
 var read = function(file, callback) {
-  console.error('[READ] ' + file)
+  console.error(' [READ] ' + file)
   var readFile = HTTP_REGEX.test(file) ? readRemote : readLocal
   readFile(file, callback)
 }

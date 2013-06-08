@@ -8,7 +8,11 @@
 , "version"         : "1.0.0"
 , "engines"         : {"node": ">=0.4.0"}
 , "bin"             : {"jsbuild": "./bin/jsbuild"}
-, "dependencies"    : {"jsclass": "", "nopt": ""}
+, "preferGlobal"    : true
+, "dependencies"    : {"nopt": ""}
+, "devDependencies" : {"jsclass": "4.0.0"}
+
+, "scripts"         : {"build": "cp node_modules/jsclass/src/package.js lib/package.js"}
 
 , "repository"      : { "type"  : "git"
                       , "url"   : "git://github.com/jcoglan/jsbuild.git"
