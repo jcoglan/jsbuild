@@ -133,7 +133,7 @@ bundles are stored.
 
 ```
 $ jsbuild -m public/js/manifest.js -b bundles.json -r public/js -o paths libs
-https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js
+https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.js
 
 $ jsbuild -m public/js/manifest.js -b bundles.json -r public/js -o paths app
 public/js/app.js
@@ -144,7 +144,7 @@ instead get this output, where jQuery has been included before our own files:
 
 ```
 $ jsbuild -m public/js/manifest.js -b bundles.json -r public/js -o paths app
-https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js
+https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.js
 public/js/app.js
 ```
 
