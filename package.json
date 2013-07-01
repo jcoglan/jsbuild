@@ -5,12 +5,12 @@
 , "keywords"        : ["build"]
 , "license"         : "MIT"
 
-, "version"         : "1.0.0"
+, "version"         : "1.0.1"
 , "engines"         : {"node": ">=0.4.0"}
 , "bin"             : {"jsbuild": "./bin/jsbuild"}
 , "preferGlobal"    : true
 , "dependencies"    : {"nopt": ""}
-, "devDependencies" : {"jsclass": "4.0.0"}
+, "devDependencies" : {"jsclass": "4.0.1"}
 
 , "scripts"         : {"build": "cp node_modules/jsclass/src/package.js lib/package.js"}
 
